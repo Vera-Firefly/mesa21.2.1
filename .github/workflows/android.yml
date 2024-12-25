@@ -79,7 +79,7 @@ jobs:
             -Dgallium-drivers=virgl \
             -Dshared-glapi=false
           ninja -C "build-android" install
-          cp /tmp/zink/lib/libOSMesa.so.8.0.0 /tmp/zink/lib/libOSMesa.so.8
+          cp /tmp/zink/lib/libOSMesa.so /tmp/zink/lib/libOSMesa_8.so
       - name: Upload libraries
         uses: actions/upload-artifact@v4
         with:
