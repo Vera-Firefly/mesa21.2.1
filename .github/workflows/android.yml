@@ -41,28 +41,6 @@ jobs:
 
       - name: Build
         run: |
-          # ln -s vulkan_android.pc vulkan.pc
-          # cp -R /usr/include/X11 include/
-          # cp -R /usr/include/xcb include/
-          # cp -R /usr/include/GL/* include/GL/
-                    envsubst <android-drm-${{matrix.arch}} >build-crossfile-drm
-          git clone https://gitlab.freedesktop.org/mesa/drm.git
-          cd drm
-          meson setup "build-android-drm" \
-            --prefix=/tmp/drm-static \
-            --cross-file "../build-crossfile-drm" \
-            -Ddefault_library=static \
-            -Dintel=disabled \
-            -Dradeon=disabled \
-            -Damdgpu=disabled \
-            -Dnouveau=disabled \
-            -Dvmwgfx=disabled \
-            -Dfreedreno=enabled \
-            -Dvc4=disabled \
-            -Detnaviv=disabled \
-            -Dfreedreno-kgsl=true
-          ninja -C "build-android-drm" install
-          cd ..
           envsubst <android-${{matrix.arch}} >build-crossfile
           meson "build-android" \
             --prefix=/tmp/zink \
