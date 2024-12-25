@@ -10,7 +10,7 @@ jobs:
   build:
     strategy:
       matrix:
-        arch: [ "arm32", "aarch64", "x86_64" ]
+        arch: [ "arm32", "aarch64" ]
       fail-fast: false
 
     name: "Build for ${{matrix.arch}}"
@@ -80,8 +80,14 @@ jobs:
             -Dshared-glapi=false
           ninja -C "build-android" install
           cp /tmp/zink/lib/libOSMesa.so /tmp/zink/lib/libOSMesa_8.so
-      - name: Upload libraries
+      - name: Upload libOSMesa
         uses: actions/upload-artifact@v4
         with:
           name: libOSMesa_${{matrix.arch}}
-          path: /tmp/zink/lib/libOSMesa.so.8
+          path: /tmp/zink/lib/libOSMesa_8.so
+
+      - name: Upload libGL
+        uses: actions/upload-artifact@v4
+        with:
+          name: libGL_${{matrix.arch}}
+          path: /tmp/zink/lib/libGL.so
