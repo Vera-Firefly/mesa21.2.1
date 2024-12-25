@@ -6,7 +6,7 @@ cpp = ['ccache', ndk + '/armv7a-linux-androideabi${SDK_VER}-clang++', '-O3', '-D
 c_ld = 'lld'
 cpp_ld = 'lld'
 strip = ndk + '/arm-linux-androideabi29-strip'
-pkgconfig = ['env', 'PKG_CONFIG_LIBDIR=/home/runner/work/mesa21.2.1/mesa21.2.1', '/usr/bin/pkg-config']
+pkgconfig = ['env', 'PKG_CONFIG_LIBDIR=.:/tmp/drm-static/lib/pkgconfig', '/usr/bin/pkg-config']
 
 [host_machine]
 system = 'linux'
